@@ -13,6 +13,9 @@ def is_username(registration:list, new_user:User)->bool:
             found = True
     return found
 
+def add_user(new_user, registration):
+    registration.update(new_user)
+
 
 def verify_login(registration, username, password):
     return registration[password] == password

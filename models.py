@@ -5,6 +5,12 @@ class User:
         self.role = None
         self.menu_options = None
 
+    def enter_username(self):
+        self.username = input('Introduce el nombre de usuario')
+
+    def enter_password(self):
+        self.password = input('Introduce la constraseña')
+
     def show_menu(self):
         for i in self.menu_options:
             print(self.menu_options[i])
