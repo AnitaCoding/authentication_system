@@ -6,7 +6,7 @@ class User:
         self.menu_options = None
 
     def show_menu(self):
-        for i in range(0, len(self.menu_options)):
+        for i in self.menu_options:
             print(self.menu_options[i])
         input('Introduce la opción elegida: ')
 
