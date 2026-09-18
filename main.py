@@ -13,13 +13,14 @@ while authentication:
     print('3. Salir')
     chosen_option = input('Inserta la opción elegida ')
 
-    if chosen_option == '1':
-        username = enter_username
+    if chosen_option == '2':
+        username = enter_username()
         if not is_username(users_list, username):
-            print('Usuario no encontrado. Contacte con el administrador del sitio')
+            print('Usuario no encontrado. Contacte con el administrador del sitio para registrarlo.')
 
         else:
-            current_user = User() #Hay que saque al usuario de la lista y lo almacene aquí.
+            current_user = User(username)
+            current_user.get_user(users_list) #Hay que saque al usuario de la lista y lo almacene aquí.
             password = enter_password()
             
     elif chosen_option == '3':

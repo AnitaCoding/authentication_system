@@ -1,15 +1,18 @@
 class User:
-    def __init__(self, username, password, role):
-        self.username = None
+    def __init__(self, username):
+        self.username = username
         self.password = None
         self.role = None
         self.menu_options = None
 
-    def enter_username(self):
-        self.username = input('Introduce el nombre de usuario')
-
     def enter_password(self):
         self.password = input('Introduce la constraseña')
+
+    def get_user(self, registration):
+        for i in range(len(registration)):
+            if registration[i]['nickname'] == self.username:
+                print(registration[i]['password'])
+                self.role = registration[i]['role']
 
     def show_menu(self):
         for i in range(len(self.menu_options)):
@@ -20,9 +23,6 @@ class Admin(User):
     def __init__(self):
         super().__init__()
         self.menu_options = ['1. Ver lista de usuarios','2. Crear nuevo usuario','3. Eliminar usuario']
-    
-    def get_users(self, registration):
-        print(registration)
 
     def create_new_user(self, registration:dict[User], new_user:User):
         registration.update(new_user)
