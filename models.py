@@ -1,5 +1,5 @@
 class User:
-    def __init__(self):
+    def __init__(self, username, password, role):
         self.username = None
         self.password = None
         self.role = None
@@ -12,7 +12,7 @@ class User:
         self.password = input('Introduce la constraseña')
 
     def show_menu(self):
-        for i in self.menu_options:
+        for i in range(len(self.menu_options)):
             print(self.menu_options[i])
         input('Introduce la opción elegida: ')
 
@@ -41,6 +41,7 @@ class Customer(User):
     def buy_products(self, product):
         print(f'La compra de {product} se ha realizado correctamente')
 
-
+'''
 adm = Admin()
 adm.show_menu()
+'''

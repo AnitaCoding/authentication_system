@@ -6,11 +6,12 @@ def enter_username():
 def enter_password():
     input('Introduce la constraseña')
 
-def is_username(registration:list, new_user:User)->bool:
+def is_username(registration:list, new_user)->bool:
     found = False
-    for i in registration:
-        if registration[i].username == new_user.username:
+    for i in range(len(registration)):
+        if registration[i]['nickname'] == new_user:
             found = True
+            print(found)
     return found
 
 def add_user(new_user, registration):
