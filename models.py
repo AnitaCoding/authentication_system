@@ -1,3 +1,4 @@
+from utils import *
 class User:
     def __init__(self, username):
         self.username = username
@@ -24,10 +25,10 @@ class Admin(User):
         super().__init__()
         self.menu_options = ['1. Ver lista de usuarios','2. Crear nuevo usuario','3. Eliminar usuario']
 
-    def create_new_user(self, registration:dict[User], new_user:User):
+    def create_new_user(self, registration:list[dict], new_user:User):
         registration.update(new_user)
         
-    def delete_user(self, registration:dict[User], u:User):
+    def delete_user(self, registration:list[dict], u:User):
         registration.pop(u.username)
         
 class Customer(User):
@@ -35,7 +36,7 @@ class Customer(User):
         super().__init__()
         self.menu_options = ['1. Ver lista de productos', '2. Comprar']
 
-    def get_products(self, products):
+    def get_products(self, products:list[dict]):
         print(products)
 
     def buy_products(self, product):
@@ -45,3 +46,28 @@ class Customer(User):
 adm = Admin()
 adm.show_menu()
 '''
+
+class Authentication:
+    def __init__(self):
+        pass
+
+    def registrar_usuario(self):
+        pass
+
+    def is_username(self, registration, username):
+        found = False
+        for i in range(len(registration)):
+            if registration[i]['nickname'] == username:
+                found = True
+        return found
+
+    def iniciar_sesion(self, users_list):
+        username = enter_username()
+        if not is_username(users_list, username):
+            print('Usuario no encontrado. Contacte con el administrador del sitio para registrarlo.')
+
+        else:
+            current_user = User(username)
+            current_user.get_user(users_list)
+            password = enter_password()
+

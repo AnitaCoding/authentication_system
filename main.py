@@ -1,5 +1,6 @@
 from utils import *
 from models import *
+
 users_list = [{'nickname':'Ana', 'password': 'mypassword', 'role':'admin'},
               {'nickname':'David', 'password': 'mypassword', 'role':'customer'},
               {'nickname':'Carmen', 'password': 'mypassword', 'role':'customer'}]
@@ -13,17 +14,21 @@ while authentication:
     print('3. Salir')
     chosen_option = input('Inserta la opción elegida ')
 
-    if chosen_option == '2':
-        username = enter_username()
+    if chosen_option == 1:
+        print('Registrar usuario')
+    elif chosen_option == '2':
+        """username = enter_username()
         if not is_username(users_list, username):
             print('Usuario no encontrado. Contacte con el administrador del sitio para registrarlo.')
 
         else:
             current_user = User(username)
             current_user.get_user(users_list) #Hay que saque al usuario de la lista y lo almacene aquí.
-            password = enter_password()
+            password = enter_password()"""
             
     elif chosen_option == '3':
         authentication = False
     else:
         print('La opción introducida no es correcta. Inténtelo de nuevo')
+
+#Dudas: todo lo que podamos convertir en una función, lo separamos del main?
