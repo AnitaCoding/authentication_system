@@ -1,10 +1,10 @@
-from models import User
+#from models import User
 
 def enter_username():
     return input('Introduce el nombre de usuario')
 
 def enter_password():
-    input('Introduce la constraseña')
+    return input('Introduce la constraseña')
 
 def is_username(registration:list, new_user)->bool:
     found = False

@@ -5,9 +5,9 @@ users_list = [{'nickname':'Ana', 'password': 'mypassword', 'role':'admin'},
               {'nickname':'David', 'password': 'mypassword', 'role':'customer'},
               {'nickname':'Carmen', 'password': 'mypassword', 'role':'customer'}]
 
-authentication = True
-
-while authentication:
+main_menu = True
+auth = Authentication()
+while main_menu:
     print('---Elige una opción---')
     print('1. Registrar nuevo usuario.')
     print('2. Iniciar sesión.')
@@ -17,17 +17,13 @@ while authentication:
     if chosen_option == 1:
         print('Registrar usuario')
     elif chosen_option == '2':
-        """username = enter_username()
-        if not is_username(users_list, username):
-            print('Usuario no encontrado. Contacte con el administrador del sitio para registrarlo.')
 
-        else:
-            current_user = User(username)
-            current_user.get_user(users_list) #Hay que saque al usuario de la lista y lo almacene aquí.
-            password = enter_password()"""
+        logged_user = auth.log_in(users_list)
+        logged_user.show_menu()
+
             
     elif chosen_option == '3':
-        authentication = False
+        main_menu = False
     else:
         print('La opción introducida no es correcta. Inténtelo de nuevo')
 

@@ -12,7 +12,7 @@ class User:
     def get_user(self, registration):
         for i in range(len(registration)):
             if registration[i]['nickname'] == self.username:
-                print(registration[i]['password'])
+                self.password = registration[i]['password']
                 self.role = registration[i]['role']
 
     def show_menu(self):
@@ -21,8 +21,8 @@ class User:
         input('Introduce la opción elegida: ')
 
 class Admin(User):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, username):
+        super().__init__(username)
         self.menu_options = ['1. Ver lista de usuarios','2. Crear nuevo usuario','3. Eliminar usuario']
 
     def create_new_user(self, registration:list[dict], new_user:User):
@@ -32,8 +32,8 @@ class Admin(User):
         registration.pop(u.username)
         
 class Customer(User):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, username):
+        super().__init__(username)
         self.menu_options = ['1. Ver lista de productos', '2. Comprar']
 
     def get_products(self, products:list[dict]):
@@ -61,7 +61,7 @@ class Authentication:
                 found = True
         return found
 
-    def iniciar_sesion(self, users_list):
+    def log_in(self, users_list):
         username = enter_username()
         if not is_username(users_list, username):
             print('Usuario no encontrado. Contacte con el administrador del sitio para registrarlo.')
@@ -69,5 +69,20 @@ class Authentication:
         else:
             current_user = User(username)
             current_user.get_user(users_list)
-            password = enter_password()
+            wrong_password = True
+
+            while wrong_password:
+                password = enter_password()
+                if password == current_user.password:
+                    wrong_password = False
+
+        if current_user.role == 'admin':
+            logged_user = Admin(username)
+
+        else:
+            logged_user = Customer(username)
+
+        return logged_user
+
+
 
