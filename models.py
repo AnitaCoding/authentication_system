@@ -96,5 +96,6 @@ class Authentication:
 
         return logged_user
 
-    def show_main_menu(self)
+    def show_main_menu(self):
+        pass
 
