@@ -1,17 +1,10 @@
 #from models import User
 
 def enter_username():
-    return input('Introduce el nombre de usuario')
+    return input('Introduce el nombre de usuario: ')
 
 def enter_password():
-    return input('Introduce la constraseña')
-
-def is_username(registration:list, new_user)->bool:
-    found = False
-    for i in range(len(registration)):
-        if registration[i]['nickname'] == new_user:
-            found = True
-    return found
+    return input('Introduce la constraseña: ')
 
 def add_user(new_user, registration):
     registration.update(new_user)
